@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Domain.Repositories;
 
 namespace ToDoApplication.Controllers
 {
@@ -11,9 +12,24 @@ namespace ToDoApplication.Controllers
     {
         private readonly IMediator mediator;
 
-        public ToDoItemsController(IMediator mediator)
+        private readonly IToDoItemRepository _toDoRepository;
+
+        public ToDoItemsController(IMediator mediator, IToDoItemRepository toDoRepository)
         {
             this.mediator = mediator;
+            this._toDoRepository = toDoRepository;
+        }
+
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(Guid id)
+        {
+            var toDoItem = await _toDoRepository.GetByIdAsync(id);
+            if (toDoItem == null)
+            {
+                return NotFound();
+            }
+            return Ok(toDoItem);
         }
 
         [HttpPost]

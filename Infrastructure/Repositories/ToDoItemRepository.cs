@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace Infrastructure.Repositories
 {
@@ -43,9 +45,14 @@ namespace Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<ToDoItem> GetByIdAsync(Guid id)
+        public async Task<ToDoItem> GetByIdAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var item = await context.ToDoItems.FirstOrDefaultAsync(item => item.Id == id);
+            if (item == null)
+            {
+                throw new KeyNotFoundException($"Item with Id '{id}' not found.");
+            }
+            return item;
         }
 
         public async Task UpdateAsync(ToDoItem item)
