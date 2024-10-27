@@ -39,5 +39,10 @@ namespace ToDoApplication.Controllers
 
             return NoContent();
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Guid>> DeleteToDoItem(Guid id)
+        {
+            return await mediator.Send(new DeleteToDoItemCommand { Id = id });
+        }
     }
 }

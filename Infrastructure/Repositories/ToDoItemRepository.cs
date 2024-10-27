@@ -24,9 +24,18 @@ namespace Infrastructure.Repositories
             return toDoItem.Id;
         }
 
-        public Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(Guid id)
         {
-            throw new NotImplementedException();
+            var item = await context.ToDoItems.FindAsync(id);
+            if (item == null)
+            {
+                context.ToDoItems.Remove(item);
+                await context.SaveChangesAsync();
+            }
+            else
+            {
+                throw new Exception("ToDoItem not found");
+            }
         }
 
         public Task<IEnumerable<ToDoItem>> GetAllAsync()
