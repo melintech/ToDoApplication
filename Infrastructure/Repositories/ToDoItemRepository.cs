@@ -29,7 +29,7 @@ namespace Infrastructure.Repositories
         public async Task DeleteAsync(Guid id)
         {
             var item = await context.ToDoItems.FindAsync(id);
-            if (item == null)
+            if (item != null)
             {
                 context.ToDoItems.Remove(item);
                 await context.SaveChangesAsync();
@@ -39,6 +39,7 @@ namespace Infrastructure.Repositories
                 throw new Exception("ToDoItem not found");
             }
         }
+
 
         public async Task<ToDoItem> GetByIdAsync(Guid id)
         {
