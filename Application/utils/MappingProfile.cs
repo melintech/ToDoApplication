@@ -1,4 +1,5 @@
 ﻿using Application.DTOs;
+using Application.Use_Cases.Commands;
 using AutoMapper;
 using Domain.Entities;
 using System;
@@ -14,6 +15,7 @@ namespace Application.utils
         public MappingProfile()
         {
             CreateMap<ToDoItem, ToDoItemDto>().ReverseMap();
+            CreateMap<CreateToDoItemCommand, ToDoItem>().ReverseMap();
         }
     }
 }
