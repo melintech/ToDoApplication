@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Application.utils;
+using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
 namespace Application
@@ -9,7 +10,9 @@ namespace Application
         {
             services.AddMediatR(
                 cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
-            
+
+            services.AddAutoMapper(typeof(MappingProfile));
+
             return services;
         }
     }

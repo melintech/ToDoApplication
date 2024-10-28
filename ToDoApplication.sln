@@ -19,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{BD943A12-11DE-4D1E-9849-45DF223D5D73}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Get_By_id.tests", "Get_By_id.tests\Get_By_id.tests.csproj", "{5E3DE822-249A-4BD9-91D6-D06C3EA3E9A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Get_By_id.tests", "Get_By_id.tests\Get_By_id.tests.csproj", "{5E3DE822-249A-4BD9-91D6-D06C3EA3E9A4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

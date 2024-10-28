@@ -40,11 +40,6 @@ namespace Infrastructure.Repositories
             }
         }
 
-        public Task<IEnumerable<ToDoItem>> GetAllAsync()
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<ToDoItem> GetByIdAsync(Guid id)
         {
             var item = await context.ToDoItems.FirstOrDefaultAsync(item => item.Id == id);
@@ -65,6 +60,11 @@ namespace Infrastructure.Repositories
                 existingItem.IsDone = item.IsDone;
                 await context.SaveChangesAsync();
             }
+        }
+
+        public async Task<IEnumerable<ToDoItem>> GetAllAsync()
+        {
+            return await context.ToDoItems.ToListAsync();
         }
     }
 }

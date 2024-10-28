@@ -3,6 +3,8 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Domain.Repositories;
+using Application.DTOs;
+using Application.Use_Cases.Queries;
 
 namespace ToDoApplication.Controllers
 {
@@ -59,6 +61,12 @@ namespace ToDoApplication.Controllers
         public async Task<ActionResult<Guid>> DeleteToDoItem(Guid id)
         {
             return await mediator.Send(new DeleteToDoItemCommand { Id = id });
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<ToDoItemDto>>> GetAllToDoItems()
+        {
+            return await mediator.Send(new GetAllToDoItemsQuery());
         }
     }
 }
