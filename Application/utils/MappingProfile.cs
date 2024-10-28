@@ -16,6 +16,7 @@ namespace Application.utils
         {
             CreateMap<ToDoItem, ToDoItemDto>().ReverseMap();
             CreateMap<CreateToDoItemCommand, ToDoItem>().ReverseMap();
+            CreateMap<UpdateToDoItemCommand, ToDoItem>().ReverseMap();
         }
     }
 }
